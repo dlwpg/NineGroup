@@ -18,11 +18,12 @@ public interface BorrowbooksService {
 
     int deleteAllBook(List<String> asList);
 
-    int totaldown(Integer  userid);
-
+    int totaldown(Integer userid);
+    //批量减少total
     int totaldowns(Integer count, Integer userid);
 
     int totalup(Integer bookid);
 
+    //批量增加sum
     int totalups(List<String> asList);
 }
