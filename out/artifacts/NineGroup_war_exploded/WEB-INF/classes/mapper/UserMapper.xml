@@ -9,9 +9,10 @@
     <result column="tel" property="tel" jdbcType="VARCHAR" />
     <result column="role" property="role" jdbcType="VARCHAR" />
     <result column="total" property="total" jdbcType="INTEGER" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    userId, userName, password, sex, tel, role, total
+    userId, userName, password, sex, tel, role, total,email
   </sql>
 
 <!--  还一本书user->total减少1-->

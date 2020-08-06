@@ -96,7 +96,7 @@
             success:function (info) {
                 if(info=="success"){
                     //layer.msg("登录成功", {icon: 1});
-                    window.location.href = "/user/success.do";
+                    // window.location.href = "/user/success.do";
                 }else{
                     layer.msg('账号或者密码错误！', {icon: 2});
                 }

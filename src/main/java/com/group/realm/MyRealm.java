@@ -85,7 +85,7 @@ public class MyRealm extends AuthorizingRealm {
         //设置待加密的原密码
         Object source="123";
         //设置加盐方式(一般来说都是以用户名来加盐)
-        Object salt= ByteSource.Util.bytes("user");
+        Object salt= ByteSource.Util.bytes("py");
         //加密次数
         int hashIterations=1024;
         SimpleHash newPassword=new SimpleHash(algorithmName, source, salt, hashIterations);

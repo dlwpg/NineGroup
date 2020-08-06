@@ -52,14 +52,14 @@ public class BorrowbooksController {
 //未归还
     @RequestMapping("/returnbook.ajax")
     @ResponseBody
-    public int returnbook(Borrowbooks borrowbooks,Integer bookid,Integer userid){
+    public int returnbook(Borrowbooks borrowbooks,Integer bookid2,Integer bookid,Integer userid){
         borrowbooks.setId(bookid);
         int info=bs.returnBook(borrowbooks);
         if (info>0){
             //user表减少1
             bs.totaldown(userid);
             //book表增加1
-            bs.totalup(bookid);
+            bs.totalup(bookid2);
         }
         return info;
     }

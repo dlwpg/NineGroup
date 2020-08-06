@@ -123,10 +123,11 @@
         var info = confirm("确定还书?还书之前请确定已将图书归还！");
         if (info) {
             var id = $(obj).parent().parent().find("td").find("input").eq(0).val();
+            var id2 = $(obj).parent().parent().find("td").find("input").eq(1).val();
 
             console.log(id);
             $.ajax({
-                url: "/brrowBook/returnbook.ajax?bookid=" + id + "&userid=" + userid,
+                url: "/brrowBook/returnbook.ajax?bookid=" + id + "&userid=" + userid+ "&bookid2=" + id2,
                 type: "post",
                 dataType: "text",
                 success: function (data) {

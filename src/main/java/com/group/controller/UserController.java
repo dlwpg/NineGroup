@@ -1,7 +1,9 @@
 package com.group.controller;
 
+import com.group.dao.UserMapper;
 import com.group.pojo.User;
 import com.group.service.UserService;
+import com.group.utils.SendEmail;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.mail.MessagingException;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,14 +26,26 @@ import java.util.Date;
 public class UserController {
     @Autowired
     private UserService us;
+    @Autowired
+    private UserMapper userMapper;
   @RequestMapping("login.do")
   public  String login(){
       return "login";
   }
     @RequestMapping("checkLogin.do")
     @ResponseBody
-    public String checkLogin(User user, String remember, HttpServletResponse response, HttpServletRequest request){
+    public String checkLogin(User user, String remember, HttpServletResponse response, HttpServletRequest request) throws MessagingException {
         String info = us.checkLogin(user,remember,response,request);
+
+//        String address=userMapper.queryPersonByPersonName(user.getUsername()).getEmail();
+//        System.out.println(address);
+
+        User user1= (User) request.getSession().getAttribute("userinfo");
+        String address=user1.getEmail();
+        System.out.println(address);
+        if (info.equals("success")){
+        String content = "<a href='http://localhost:8080/user/success.do?method=active&userId="+user.getUserid()+"'>确认登录</a>";
+        SendEmail.sendMail(address, "登录通知邮件", content);}
         return info;
     }
 //    @RequestMapping("online.ajax")
