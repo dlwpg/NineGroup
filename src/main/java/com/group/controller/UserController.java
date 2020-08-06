@@ -33,13 +33,13 @@ public class UserController {
         String info = us.checkLogin(user,remember,response,request);
         return info;
     }
-    @RequestMapping("online.ajax")
-    @ResponseBody
-    public String selectOnline(HttpSession session) {
-        Object num = session.getServletContext().getAttribute("usercount");
-        return num+"";
-
-    }
+//    @RequestMapping("online.ajax")
+//    @ResponseBody
+//    public String selectOnline(HttpSession session) {
+//
+//        return "";
+//
+//    }
     //DefaultFilter //这个类里面定义所有shiro所有的过滤器
     @RequestMapping("success.do")
     public String success(){
