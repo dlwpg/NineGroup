@@ -40,12 +40,13 @@ public class UserController {
 //        String address=userMapper.queryPersonByPersonName(user.getUsername()).getEmail();
 //        System.out.println(address);
 
-        User user1= (User) request.getSession().getAttribute("userinfo");
-        String address=user1.getEmail();
-        System.out.println(address);
-        if (info.equals("success")){
-        String content = "<a href='http://localhost:8080/user/success.do?method=active&userId="+user.getUserid()+"'>确认登录</a>";
-        SendEmail.sendMail(address, "登录通知邮件", content);}
+        //邮箱验证登录
+//        User user1= (User) request.getSession().getAttribute("userinfo");
+//        String address=user1.getEmail();
+//        System.out.println(address);
+//        if (info.equals("success")){
+//        String content = "<a href='http://localhost:8080/user/success.do?method=active&userId="+user.getUserid()+"'>确认登录</a>";
+//        SendEmail.sendMail(address, "登录通知邮件", content);}
         return info;
     }
 //    @RequestMapping("online.ajax")

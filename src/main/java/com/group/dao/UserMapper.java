@@ -20,4 +20,7 @@ public interface UserMapper {
     int totaldown(Integer userid);
 
     int totaldowns(Integer count, Integer userid);
+
+    User tongjinan();
+    User tongjizong();
 }

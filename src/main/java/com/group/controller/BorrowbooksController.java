@@ -2,26 +2,41 @@ package com.group.controller;
 
 import com.group.pojo.Book;
 import com.group.pojo.Borrowbooks;
+import com.group.pojo.User;
+import com.group.service.BookService;
 import com.group.service.BorrowbooksService;
+import com.group.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 @Controller
 @RequestMapping("brrowBook")
 public class BorrowbooksController {
     @Autowired
     BorrowbooksService bs;
+    @Autowired
+    BookService bookService;
+    @Autowired
+    UserService userService;
     @RequestMapping("jieshu.do")
     public String jieshu(){
         return "borrowbook/brrowbooklist";
+    }
+    @RequestMapping("tongji1.do")
+    public String tongji1(){
+        return "borrowbook/Borrowingbarchart";
+    }
+    @RequestMapping("tongji2.do")
+    public String tongji2(){
+        return "borrowbook/nnbl";
     }
 
     @RequestMapping("weihuan.do")
@@ -91,5 +106,26 @@ public class BorrowbooksController {
 
         int info=bs.deleteAllBook(Arrays.asList(s.split(",")));
         return info;
+    }
+
+    //统计各类图书总数
+    @RequestMapping(value = "/tongjizongshu.ajax",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public List<Book> tongjizongshu(){
+        List<Book> bookList=bookService.tongjizongshu();
+        return bookList;
+    }
+    //统计男女比例
+    @RequestMapping(value = "/tongjinannv.ajax",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public List<Double> tongjinannv(){
+        List<Double> bookList=new ArrayList<Double>();
+        Integer userid = userService.tongjinan().getUserid();
+        Integer userid1 = userService.tongjizoong().getUserid();
+        Double nan=userid/(userid1*1.0);
+        Double nv=(userid1-userid)/(userid1*1.0);
+        bookList.add(nan);
+        bookList.add(nv);
+        return bookList;
     }
 }

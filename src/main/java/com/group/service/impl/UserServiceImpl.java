@@ -27,6 +27,8 @@ public class UserServiceImpl implements UserService {
     private UserMapper pm;
     @Autowired
     private GetIp getIp;
+    @Autowired
+    private UserMapper userMapper;
 
     @Override
     public String checkLogin(User p, String remember, HttpServletResponse response, HttpServletRequest request) {
@@ -183,4 +185,15 @@ public class UserServiceImpl implements UserService {
 
         return p;
     }
+
+    @Override
+    public User tongjinan() {
+        return userMapper.tongjinan();
+    }
+
+    @Override
+    public User tongjizoong() {
+        return userMapper.tongjizong();
+    }
+
 }

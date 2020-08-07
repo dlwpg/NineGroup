@@ -14,7 +14,19 @@
   <sql id="Base_Column_List" >
     userId, userName, password, sex, tel, role, total,email
   </sql>
-
+<!--  查询男生人数-->
+  <select id="tongjinan" resultMap="BaseResultMap">
+    select
+   count(1) as userid
+    from user
+    where sex='男'
+  </select>
+  <!--  查询总人数-->
+  <select id="tongjizong" resultMap="BaseResultMap">
+    select
+   count(1) as userid
+    from user
+  </select>
 <!--  还一本书user->total减少1-->
   <update id="totaldown" parameterType="java.lang.Integer">
     UPDATE user SET total=total-1 WHERE userid=#{userid}

@@ -137,9 +137,11 @@
 						class="iconfont nav_right">&#xe697;</i>
 				</a>
 					<ul class="sub-menu">
-						<li><a _href="brrowBook/jieshu.do"> <i class="iconfont">&#xe6a7;</i> <cite>未还图书</cite>
+						<li><a _href="brrowBook/tongji1.do"> <i class="iconfont">&#xe6a7;</i> <cite>书库统计</cite>
 						</a></li>
-						<li><a _href="propertyController/showBorrowreturn.do"> <i class="iconfont">&#xe6a7;</i> <cite>借阅记录</cite>
+						<li><a _href="brrowBook/tongji2.do"> <i class="iconfont">&#xe6a7;</i> <cite>男女比例统计</cite>
+						</a></li>
+						<li><a _href="brrowBook/jieshu.do"> <i class="iconfont">&#xe6a7;</i> <cite>未还图书</cite>
 						</a></li>
 						<li><a _href="brrowBook/weihuan.do"> <i class="iconfont">&#xe6a7;</i> <cite>还书记录</cite>
 						</a></li>

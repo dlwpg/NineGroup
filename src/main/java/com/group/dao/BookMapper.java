@@ -20,4 +20,6 @@ public interface BookMapper {
     int totalup(Integer bookid);
 
     int totalups(List<String> asList);
+
+    List<Book> tongjizongshu();
 }
